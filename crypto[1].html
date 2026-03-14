@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crypto Exchange — Gentian Solartech Inc.</title>
+  <link rel="stylesheet" href="../assets/css/style.css" />
+  <link rel="stylesheet" href="../assets/css/crypto.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body class="page-body">
+
+<canvas id="neural-canvas"></canvas>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<header class="nav-header scrolled">
+  <nav class="nav-inner">
+    <a href="../index.html" class="logo">
+      <span class="logo-icon">⬡</span>
+      <span class="logo-text">Gentian<span class="accent">Solartech</span></span>
+    </a>
+    <div style="display:flex;align-items:center;gap:16px;">
+      <a href="payment.html" class="btn-nav">Pay Now</a>
+      <a href="../index.html" class="btn-ghost" style="padding:8px 18px;font-size:.85rem;">← Home</a>
+    </div>
+  </nav>
+</header>
+
+<main class="crypto-main">
+  <div class="crypto-hero">
+    <div class="section-tag">Live Crypto Exchange</div>
+    <h1 class="section-title">Crypto <span class="gradient-text">Exchange</span> Portal</h1>
+    <p>Real-time cryptocurrency rates via CoinGecko API. Convert USD to crypto or calculate your subscription cost in your preferred digital currency.</p>
+  </div>
+
+  <!-- LIVE TICKER -->
+  <div class="ticker-wrap">
+    <div class="ticker-label">LIVE PRICES</div>
+    <div class="ticker-row" id="tickerRow">
+      <div class="ticker-loading">Fetching live prices...</div>
+    </div>
+  </div>
+
+  <div class="exchange-layout">
+    <!-- LEFT: CONVERTER -->
+    <div class="converter-panel">
+      <h3>Currency Converter</h3>
+      <p class="panel-sub">Convert any amount between USD and top cryptocurrencies in real time.</p>
+
+      <div class="conv-group">
+        <label>You Pay (USD)</label>
+        <div class="conv-input-wrap">
+          <span class="conv-currency">$</span>
+          <input type="number" id="usdInput" value="999" min="1" step="1" />
+        </div>
+      </div>
+
+      <div class="conv-swap">
+        <button class="swap-btn" id="swapBtn" title="Swap">⇅</button>
+      </div>
+
+      <div class="conv-group">
+        <label>You Receive</label>
+        <div class="conv-input-wrap">
+          <select id="coinSelect" class="coin-select">
+            <option value="bitcoin">₿ Bitcoin (BTC)</option>
+            <option value="ethereum">Ξ Ethereum (ETH)</option>
+            <option value="tether">◎ USDT</option>
+            <option value="usd-coin">$ USDC</option>
+            <option value="binancecoin">⬡ BNB</option>
+            <option value="solana">◎ Solana (SOL)</option>
+            <option value="ripple">✕ XRP</option>
+            <option value="cardano">₳ Cardano (ADA)</option>
+          </select>
+          <input type="text" id="cryptoOutput" placeholder="—" readonly class="crypto-out" />
+        </div>
+      </div>
+
+      <div class="rate-info" id="rateInfo">
+        <span class="rate-label">Exchange Rate:</span>
+        <span class="rate-val" id="rateVal">Loading...</span>
+      </div>
+
+      <div class="conv-note">
+        <span class="note-icon">ℹ</span>
+        Rates refresh every 30 seconds. Displayed rates are indicative only.
+      </div>
+
+      <a href="payment.html" class="btn-primary" style="margin-top:16px;display:block;text-align:center;">
+        Pay Subscription with Crypto →
+      </a>
+    </div>
+
+    <!-- RIGHT: MARKET TABLE -->
+    <div class="market-panel">
+      <div class="market-header">
+        <h3>Live Market Prices</h3>
+        <div class="market-actions">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="top">Top 5</button>
+          <span class="last-update" id="lastUpdate">Updating...</span>
+        </div>
+      </div>
+
+      <table class="market-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Coin</th>
+            <th>Price (USD)</th>
+            <th>24h Change</th>
+            <th>Market Cap</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody id="marketBody">
+          <tr><td colspan="6" class="loading-row">Fetching market data...</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- SUBSCRIPTION PAY WITH CRYPTO -->
+  <div class="sub-crypto-section">
+    <div class="section-header">
+      <div class="section-tag">Subscribe with Crypto</div>
+      <h2 class="section-title">Pay Your <span class="gradient-text">Subscription</span> in Crypto</h2>
+    </div>
+    <div class="sub-plans-crypto">
+      <div class="sub-plan-card">
+        <h4>Starter</h4>
+        <div class="sub-usd">$299 <span>/mo</span></div>
+        <div class="sub-btc" data-usd="299">Calculating...</div>
+        <div class="sub-eth" data-usd="299">Calculating...</div>
+        <a href="payment.html?plan=starter" class="btn-outline" style="margin-top:16px;display:block;text-align:center;width:100%">Pay Now</a>
+      </div>
+      <div class="sub-plan-card featured-crypto">
+        <div class="featured-badge">Most Popular</div>
+        <h4>Professional</h4>
+        <div class="sub-usd">$999 <span>/mo</span></div>
+        <div class="sub-btc" data-usd="999">Calculating...</div>
+        <div class="sub-eth" data-usd="999">Calculating...</div>
+        <a href="payment.html?plan=professional" class="btn-primary" style="margin-top:16px;display:block;text-align:center;">Pay Now</a>
+      </div>
+      <div class="sub-plan-card">
+        <h4>Enterprise</h4>
+        <div class="sub-usd" style="font-size:1.5rem;background:var(--grad);-webkit-background-clip:text;-webkit-text-fill-color:transparent;">Custom</div>
+        <div class="sub-note">Contact our sales team for custom enterprise pricing and crypto payment arrangements.</div>
+        <a href="../index.html#contact" class="btn-outline" style="margin-top:16px;display:block;text-align:center;width:100%">Contact Sales</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SUPPORTED NETWORKS -->
+  <div class="networks-section">
+    <h3>Supported Networks & Wallets</h3>
+    <div class="networks-grid">
+      <div class="network-card"><span class="net-icon">₿</span><span>Bitcoin (BTC)</span><span class="net-tag">Native SegWit</span></div>
+      <div class="network-card"><span class="net-icon">Ξ</span><span>Ethereum (ETH)</span><span class="net-tag">ERC-20</span></div>
+      <div class="network-card"><span class="net-icon">◎</span><span>USDT</span><span class="net-tag">ERC-20 / TRC-20</span></div>
+      <div class="network-card"><span class="net-icon">$</span><span>USDC</span><span class="net-tag">ERC-20</span></div>
+      <div class="network-card"><span class="net-icon">⬡</span><span>BNB</span><span class="net-tag">BEP-20</span></div>
+      <div class="network-card"><span class="net-icon">◎</span><span>Solana</span><span class="net-tag">SPL</span></div>
+    </div>
+    <p class="network-note">All crypto payments are processed with 1–3 blockchain confirmations before access is granted. Payments are non-refundable per our <a href="#">Terms of Service</a>.</p>
+  </div>
+</main>
+
+<footer class="footer" style="margin-top:0;">
+  <div class="container">
+    <div class="footer-bottom">
+      <p>© 2025 Gentian Solartech Inc. All rights reserved. | Crypto rates powered by CoinGecko API</p>
+      <div class="payment-badges">
+        <span class="badge">₿ Bitcoin</span>
+        <span class="badge">Ξ Ethereum</span>
+        <span class="badge">◎ USDT</span>
+        <span class="badge">$ USDC</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/crypto.js"></script>
+</body>
+</html>

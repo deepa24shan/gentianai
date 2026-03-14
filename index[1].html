@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gentian Solartech Inc. | AI Solutions for the Future</title>
+  <meta name="description" content="Gentian Solartech Inc. — AI-powered software, automation, digital transformation, and consulting for modern enterprises worldwide." />
+  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/home-images.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+</head>
+<body>
+<canvas id="neural-canvas"></canvas>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- ─── NAV ──────────────────────────────────────────────────── -->
+<header class="nav-header" id="navbar">
+  <nav class="nav-inner">
+    <a href="#" class="logo">
+      <span class="logo-icon">&#x2B21;</span>
+      <span class="logo-text">Gentian<span class="accent">Solartech</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#about">About</a></li>
+      <li><a href="#services">Services</a></li>
+      <li><a href="#solutions">Solutions</a></li>
+      <li><a href="pages/consulting.html">Consulting</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="pages/crypto.html">Crypto</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="pages/payment.html" class="btn-nav">Buy Now</a>
+    <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </nav>
+</header>
+
+<!-- ─── HERO ──────────────────────────────────────────────────── -->
+<section class="hero" id="home">
+  <div class="hero-image-bg">
+    <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=1600&q=80&auto=format&fit=crop" alt="AI Technology" loading="eager" />
+    <div class="hero-img-overlay"></div>
+  </div>
+  <div class="hero-content">
+    <div class="hero-badge"><span class="pulse-dot"></span> AI-Powered Innovation &nbsp;·&nbsp; Est. USA</div>
+    <h1 class="hero-title">
+      Intelligence<br/>
+      <span class="gradient-text">Engineered</span><br/>
+      for Tomorrow
+    </h1>
+    <p class="hero-sub">Gentian Solartech Inc. builds AI software, automation platforms, and smart digital systems that transform how modern enterprises operate, analyze, and decide &mdash; worldwide.</p>
+    <div class="hero-cta">
+      <a href="pages/payment.html" class="btn-primary">&#128274; Buy Now &nbsp;&#8594;</a>
+      <a href="pages/consulting.html" class="btn-ghost">Free Consultation</a>
+      <a href="#solutions" class="btn-ghost">Explore Solutions</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num" data-target="98">0</span><span>%</span><p>Uptime SLA</p></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num" data-target="500">0</span><span>+</span><p>Enterprise Clients</p></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num" data-target="40">0</span><span>x</span><p>Faster Decisions</p></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num" data-target="50">0</span><span>+</span><p>Countries Served</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── MARQUEE ───────────────────────────────────────────────── -->
+<div class="marquee-wrap">
+  <div class="marquee-track">
+    <span>AI Automation</span><span class="dot">&#9670;</span>
+    <span>Smart Analytics</span><span class="dot">&#9670;</span>
+    <span>Digital Transformation</span><span class="dot">&#9670;</span>
+    <span>Energy AI</span><span class="dot">&#9670;</span>
+    <span>NLP Platforms</span><span class="dot">&#9670;</span>
+    <span>Decision Intelligence</span><span class="dot">&#9670;</span>
+    <span>Computer Vision</span><span class="dot">&#9670;</span>
+    <span>3D Secure Payments</span><span class="dot">&#9670;</span>
+    <span>Global Consulting</span><span class="dot">&#9670;</span>
+    <span>Predictive Systems</span><span class="dot">&#9670;</span>
+    <span>AI Automation</span><span class="dot">&#9670;</span>
+    <span>Smart Analytics</span><span class="dot">&#9670;</span>
+    <span>Digital Transformation</span><span class="dot">&#9670;</span>
+    <span>Energy AI</span><span class="dot">&#9670;</span>
+    <span>NLP Platforms</span><span class="dot">&#9670;</span>
+    <span>Decision Intelligence</span><span class="dot">&#9670;</span>
+    <span>Computer Vision</span><span class="dot">&#9670;</span>
+    <span>3D Secure Payments</span><span class="dot">&#9670;</span>
+    <span>Global Consulting</span><span class="dot">&#9670;</span>
+    <span>Predictive Systems</span><span class="dot">&#9670;</span>
+  </div>
+</div>
+
+<!-- ─── ABOUT ─────────────────────────────────────────────────── -->
+<section class="about section" id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-visual-real">
+        <div class="about-img-stack">
+          <img class="about-img-main" src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=600&q=80&auto=format&fit=crop" alt="AI Technology" loading="lazy" />
+          <img class="about-img-secondary" src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=400&q=80&auto=format&fit=crop" alt="Data Analytics" loading="lazy" />
+          <div class="about-img-badge"><span class="aib-num">12+</span><span>AI Models</span></div>
+        </div>
+      </div>
+      <div class="about-content">
+        <div class="section-tag">Who We Are</div>
+        <h2 class="section-title">Redefining What<br/><span class="gradient-text">AI Can Do</span></h2>
+        <p>Gentian Solartech Inc. is a US-based technology company on a mission to democratize intelligent automation. We build AI-powered software tools, end-to-end automation ecosystems, and data-driven digital platforms tailored for real business outcomes.</p>
+        <p>From energy technology integrations to enterprise-scale natural language platforms, we engineer solutions that adapt, learn, and evolve with your organization — serving clients in over 50 countries worldwide.</p>
+        <div class="about-pillars">
+          <div class="pillar"><div class="pillar-icon">&#9889;</div><span>Energy AI</span></div>
+          <div class="pillar"><div class="pillar-icon">&#129504;</div><span>Deep Learning</span></div>
+          <div class="pillar"><div class="pillar-icon">&#128279;</div><span>Integrations</span></div>
+          <div class="pillar"><div class="pillar-icon">&#128737;</div><span>Secure Systems</span></div>
+        </div>
+        <div style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="pages/consulting.html" class="btn-primary">Get Free Consultation &#8594;</a>
+          <a href="pages/payment.html" class="btn-ghost">View Plans</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SERVICES WITH IMAGES ──────────────────────────────────── -->
+<section class="services section" id="services">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">What We Build</div>
+      <h2 class="section-title">Core <span class="gradient-text">Services</span></h2>
+      <p class="section-desc">Six pillars of AI-driven transformation, each engineered for enterprise resilience and scale.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&q=80&auto=format&fit=crop" alt="AI Software" loading="lazy" />
+        </div>
+        <div class="card-glow"></div>
+        <div class="service-num">01</div>
+        <div class="service-icon">&#129302;</div>
+        <h3>AI Software Development</h3>
+        <p>Custom ML models, NLP engines, and intelligent applications built to your exact specifications.</p>
+        <a href="pages/consulting.html" class="card-link">Consult Free &#8594;</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?w=400&q=80&auto=format&fit=crop" alt="Automation" loading="lazy" />
+        </div>
+        <div class="card-glow"></div>
+        <div class="service-num">02</div>
+        <div class="service-icon">&#9881;&#65039;</div>
+        <h3>Automation Systems</h3>
+        <p>End-to-end business process automation — from RPA pipelines to intelligent document processing.</p>
+        <a href="pages/consulting.html" class="card-link">Consult Free &#8594;</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&q=80&auto=format&fit=crop" alt="Analytics" loading="lazy" />
+        </div>
+        <div class="card-glow"></div>
+        <div class="service-num">03</div>
+        <div class="service-icon">&#128202;</div>
+        <h3>Data Analytics Platforms</h3>
+        <p>Real-time dashboards, predictive analytics, and BI tools transforming data into strategic advantage.</p>
+        <a href="pages/consulting.html" class="card-link">Consult Free &#8594;</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=400&q=80&auto=format&fit=crop" alt="Solar Energy" loading="lazy" />
+        </div>
+        <div class="card-glow"></div>
+        <div class="service-num">04</div>
+        <div class="service-icon">&#9889;</div>
+        <h3>Energy Tech AI</h3>
+        <p>AI models for smart grid management, solar performance prediction, and energy optimization.</p>
+        <a href="pages/consulting.html" class="card-link">Consult Free &#8594;</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=400&q=80&auto=format&fit=crop" alt="Digital Transformation" loading="lazy" />
+        </div>
+        <div class="card-glow"></div>
+        <div class="service-num">05</div>
+        <div class="service-icon">&#127760;</div>
+        <h3>Digital Transformation</h3>
+        <p>Full-stack digital overhaul — cloud migration, API ecosystems, and AI-native architecture.</p>
+        <a href="pages/consulting.html" class="card-link">Consult Free &#8594;</a>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-img">
+          <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=400&q=80&auto=format&fit=crop" alt="Security" loading="lazy" />
+        </div>
+        <div class="card-glow"></div>
+        <div class="service-num">06</div>
+        <div class="service-icon">&#128274;</div>
+        <h3>Smart Security Systems</h3>
+        <p>AI-driven cybersecurity, anomaly detection, and compliance automation at enterprise scale.</p>
+        <a href="pages/consulting.html" class="card-link">Consult Free &#8594;</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TECHNOLOGY SHOWCASE STRIP ────────────────────────────── -->
+<section class="tech-strip">
+  <div class="tech-strip-grid">
+    <div class="ts-item">
+      <img src="https://images.unsplash.com/photo-1676277791608-ac54525aa94b?w=500&q=80&auto=format&fit=crop" alt="Neural Network" loading="lazy" />
+      <div class="ts-overlay"><span>Neural Networks</span></div>
+    </div>
+    <div class="ts-item ts-tall">
+      <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80&auto=format&fit=crop" alt="Machine Learning" loading="lazy" />
+      <div class="ts-overlay"><span>Machine Learning</span></div>
+    </div>
+    <div class="ts-item">
+      <img src="https://images.unsplash.com/photo-1639322537228-f710d846310a?w=500&q=80&auto=format&fit=crop" alt="Blockchain AI" loading="lazy" />
+      <div class="ts-overlay"><span>Blockchain &amp; AI</span></div>
+    </div>
+    <div class="ts-item ts-tall">
+      <img src="https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=500&q=80&auto=format&fit=crop" alt="Computer Vision" loading="lazy" />
+      <div class="ts-overlay"><span>Computer Vision</span></div>
+    </div>
+    <div class="ts-item">
+      <img src="https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=500&q=80&auto=format&fit=crop" alt="Solar Tech" loading="lazy" />
+      <div class="ts-overlay"><span>Solar Tech AI</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── SOLUTIONS ─────────────────────────────────────────────── -->
+<section class="solutions section" id="solutions">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Featured Platforms</div>
+      <h2 class="section-title">AI <span class="gradient-text">Solutions</span> Suite</h2>
+    </div>
+    <div class="solutions-tabs">
+      <div class="tab-nav">
+        <button class="tab-btn active" data-tab="genesis">Genesis AI</button>
+        <button class="tab-btn" data-tab="solar">SolarMind</button>
+        <button class="tab-btn" data-tab="nexus">Nexus Analytics</button>
+        <button class="tab-btn" data-tab="shield">ShieldAI</button>
+      </div>
+      <div class="tab-content active" id="tab-genesis">
+        <div class="tab-inner-img">
+          <div class="tab-info">
+            <span class="product-badge">Flagship Product</span>
+            <h3>Genesis AI Platform</h3>
+            <p>Our core enterprise AI engine — a modular, API-first platform for deploying custom ML models across your entire tech stack. From data ingestion to decision output, Genesis handles every layer.</p>
+            <ul class="feature-list">
+              <li>&#10003; No-code model builder for business teams</li>
+              <li>&#10003; 50+ pre-built AI modules ready to deploy</li>
+              <li>&#10003; REST &amp; GraphQL API endpoints</li>
+              <li>&#10003; Real-time inference at 10ms latency</li>
+            </ul>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <a href="pages/payment.html" class="btn-primary">Buy Now &#8594;</a>
+              <a href="pages/consulting.html" class="btn-ghost">Free Demo</a>
+            </div>
+          </div>
+          <div class="tab-img-panel">
+            <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80&auto=format&fit=crop" alt="Genesis AI" loading="lazy" />
+            <div class="tab-img-stats">
+              <div class="tis"><span class="tis-v accent-text">97.3%</span><span>Accuracy</span></div>
+              <div class="tis"><span class="tis-v">8ms</span><span>Latency</span></div>
+              <div class="tis"><span class="tis-v">2.4TB</span><span>/ hour</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-content" id="tab-solar">
+        <div class="tab-inner-img">
+          <div class="tab-info">
+            <span class="product-badge energy">Energy Platform</span>
+            <h3>SolarMind&#8482; Energy AI</h3>
+            <p>The world's most intelligent solar and energy management platform. Uses deep reinforcement learning to optimize generation, storage, and distribution across smart grids in real time.</p>
+            <ul class="feature-list">
+              <li>&#10003; 30% average energy savings</li>
+              <li>&#10003; Predictive fault detection 48hrs ahead</li>
+              <li>&#10003; Carbon footprint analytics</li>
+              <li>&#10003; SCADA &amp; IoT integration</li>
+            </ul>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <a href="pages/payment.html" class="btn-primary">Buy Now &#8594;</a>
+              <a href="pages/consulting.html" class="btn-ghost">Free Demo</a>
+            </div>
+          </div>
+          <div class="tab-img-panel">
+            <img src="https://images.unsplash.com/photo-1509391366360-2e959784a276?w=600&q=80&auto=format&fit=crop" alt="Solar Energy" loading="lazy" />
+            <div class="tab-img-stats">
+              <div class="tis"><span class="tis-v" style="color:var(--accent2)">30%</span><span>Energy Saved</span></div>
+              <div class="tis"><span class="tis-v">3.2MW</span><span>Generated</span></div>
+              <div class="tis"><span class="tis-v">&#8722;48t</span><span>CO&#8322;</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-content" id="tab-nexus">
+        <div class="tab-inner-img">
+          <div class="tab-info">
+            <span class="product-badge analytics">Analytics</span>
+            <h3>Nexus Analytics Engine</h3>
+            <p>Turn petabytes of raw business data into clear, actionable intelligence. Combines stream processing, ML forecasting, and natural language querying into one unified platform.</p>
+            <ul class="feature-list">
+              <li>&#10003; Ask your data in plain English</li>
+              <li>&#10003; Sub-second queries on billion-row datasets</li>
+              <li>&#10003; Automated anomaly detection</li>
+              <li>&#10003; Connects to 200+ data sources</li>
+            </ul>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <a href="pages/payment.html" class="btn-primary">Buy Now &#8594;</a>
+              <a href="pages/consulting.html" class="btn-ghost">Free Demo</a>
+            </div>
+          </div>
+          <div class="tab-img-panel">
+            <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80&auto=format&fit=crop" alt="Analytics" loading="lazy" />
+            <div class="tab-img-stats">
+              <div class="tis"><span class="tis-v" style="color:var(--accent3)">+31%</span><span>APAC Growth</span></div>
+              <div class="tis"><span class="tis-v">200+</span><span>Sources</span></div>
+              <div class="tis"><span class="tis-v">&lt;1s</span><span>Query Time</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="tab-content" id="tab-shield">
+        <div class="tab-inner-img">
+          <div class="tab-info">
+            <span class="product-badge security">Security</span>
+            <h3>ShieldAI Security Platform</h3>
+            <p>Behavioral AI that learns your infrastructure's normal patterns and flags anomalies before they become breaches. Millisecond threat response, enterprise-grade compliance.</p>
+            <ul class="feature-list">
+              <li>&#10003; Zero-day threat detection via behavior AI</li>
+              <li>&#10003; Automated incident response</li>
+              <li>&#10003; SOC2 &amp; HIPAA compliance reporting</li>
+              <li>&#10003; 99.98% detection accuracy</li>
+            </ul>
+            <div style="display:flex;gap:10px;flex-wrap:wrap;">
+              <a href="pages/payment.html" class="btn-primary">Buy Now &#8594;</a>
+              <a href="pages/consulting.html" class="btn-ghost">Free Demo</a>
+            </div>
+          </div>
+          <div class="tab-img-panel">
+            <img src="https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?w=600&q=80&auto=format&fit=crop" alt="Security" loading="lazy" />
+            <div class="tab-img-stats">
+              <div class="tis"><span class="tis-v" style="color:#4ade80">99.98%</span><span>Detection</span></div>
+              <div class="tis"><span class="tis-v">&lt;5ms</span><span>Response</span></div>
+              <div class="tis"><span class="tis-v">SOC2</span><span>Certified</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONSULTING CTA BANNER ────────────────────────────────── -->
+<section class="consulting-banner">
+  <div class="cb-image">
+    <img src="https://images.unsplash.com/photo-1553877522-43269d4ea984?w=1400&q=80&auto=format&fit=crop" alt="Consulting" loading="lazy" />
+    <div class="cb-overlay"></div>
+  </div>
+  <div class="cb-content">
+    <div class="section-tag">Expert Consulting</div>
+    <h2 class="section-title">Free AI Strategy<br/><span class="gradient-text">Consultation</span></h2>
+    <p>Talk directly with our AI architects and transformation specialists. Get a free audit of your current tech stack and a custom AI roadmap — no commitment required.</p>
+    <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;">
+      <a href="pages/consulting.html" class="btn-primary">Book Free Session &#8594;</a>
+      <a href="tel:+917540008408" class="btn-ghost">&#128222; Call Now: +91-7540008408</a>
+    </div>
+    <div class="cb-trust">
+      <span>&#10003; No commitment</span>
+      <span>&#10003; 30-minute session</span>
+      <span>&#10003; Custom AI roadmap included</span>
+      <span>&#10003; Worldwide via Zoom / Teams</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRICING ───────────────────────────────────────────────── -->
+<section class="pricing section" id="pricing">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Transparent Pricing</div>
+      <h2 class="section-title">Plans for Every <span class="gradient-text">Scale</span></h2>
+      <p class="section-desc">No hidden fees. No lock-in. Start free, scale when ready. Pay with any method worldwide.</p>
+    </div>
+    <div class="pricing-grid">
+      <div class="pricing-card reveal">
+        <div class="plan-name">Starter</div>
+        <div class="plan-price"><span class="currency">$</span>299<span class="period">/mo</span></div>
+        <p class="plan-desc">Perfect for small teams and proof-of-concept deployments.</p>
+        <ul class="plan-features">
+          <li>&#10003; 3 AI Model Deployments</li>
+          <li>&#10003; 1M API calls/month</li>
+          <li>&#10003; Basic Analytics Dashboard</li>
+          <li>&#10003; Email Support</li>
+          <li>&#10007; Custom Model Training</li>
+          <li>&#10007; SLA Guarantee</li>
+        </ul>
+        <a href="pages/payment.html?plan=starter" class="btn-pay-plan">&#128274; Pay Now — 14 Days Free</a>
+        <div class="plan-pay-methods">Visa &bull; MC &bull; PayPal &bull; UPI &bull; Crypto &bull; Wire</div>
+      </div>
+      <div class="pricing-card featured reveal">
+        <div class="featured-badge">Most Popular</div>
+        <div class="plan-name">Professional</div>
+        <div class="plan-price"><span class="currency">$</span>999<span class="period">/mo</span></div>
+        <p class="plan-desc">Built for growing enterprises with advanced AI needs.</p>
+        <ul class="plan-features">
+          <li>&#10003; 20 AI Model Deployments</li>
+          <li>&#10003; 50M API calls/month</li>
+          <li>&#10003; Full Analytics Suite</li>
+          <li>&#10003; Priority 24/7 Support</li>
+          <li>&#10003; Custom Model Training</li>
+          <li>&#10003; 99.9% SLA Guarantee</li>
+        </ul>
+        <a href="pages/payment.html?plan=professional" class="btn-primary full-width" style="justify-content:center">&#128274; Pay Now — 14 Days Free</a>
+        <div class="plan-pay-methods">All Methods &bull; 2D &bull; 3D Secure &bull; Worldwide</div>
+      </div>
+      <div class="pricing-card reveal">
+        <div class="plan-name">Enterprise</div>
+        <div class="plan-price enterprise-price">Custom</div>
+        <p class="plan-desc">Unlimited scale, dedicated infrastructure, white-glove service.</p>
+        <ul class="plan-features">
+          <li>&#10003; Unlimited Deployments</li>
+          <li>&#10003; Unlimited API Calls</li>
+          <li>&#10003; On-Premise Option</li>
+          <li>&#10003; Dedicated Success Team</li>
+          <li>&#10003; Custom AI Research</li>
+          <li>&#10003; 99.99% SLA Guarantee</li>
+        </ul>
+        <a href="pages/payment.html?plan=enterprise" class="btn-pay-plan">&#128274; Pay Custom Amount</a>
+        <a href="pages/consulting.html" class="btn-outline" style="margin-top:8px;display:block;text-align:center">Book Free Consultation</a>
+        <div class="plan-pay-methods">Wire &bull; Invoice &bull; PO &bull; Crypto</div>
+      </div>
+    </div>
+    <div class="pricing-payment-strip">
+      <span>We accept:</span>
+      <span class="pps-badge visa">VISA</span>
+      <span class="pps-badge mc">Mastercard</span>
+      <span class="pps-badge amex">Amex</span>
+      <span class="pps-badge pp">PayPal</span>
+      <span class="pps-badge upi">UPI</span>
+      <span class="pps-badge gpay">Google Pay</span>
+      <span class="pps-badge apay">Apple Pay</span>
+      <span class="pps-badge btc">&#8383; Bitcoin</span>
+      <span class="pps-badge eth">&#926; Ethereum</span>
+      <span class="pps-badge wire">Bank Wire</span>
+      <span class="pps-badge bnpl">Klarna</span>
+      <span class="pps-badge bnpl">Afterpay</span>
+      <span class="pps-badge secure">&#128274; 2D / 3D Secure</span>
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ──────────────────────────────────────────── -->
+<section class="testimonials section">
+  <div class="container">
+    <div class="section-header">
+      <div class="section-tag">Client Stories</div>
+      <h2 class="section-title">Trusted by <span class="gradient-text">Industry Leaders</span></h2>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"Gentian Solartech's Genesis AI platform cut our decision latency by 80%. The ROI was visible within the first sprint."</p>
+        <div class="testi-author">
+          <div class="author-avatar">JK</div>
+          <div><strong>James Kaplan</strong><span>CTO, Meridian Financial Group</span></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"SolarMind reduced our energy costs by 34% in Q1. Their team delivered ahead of schedule with exceptional support."</p>
+        <div class="testi-author">
+          <div class="author-avatar">SR</div>
+          <div><strong>Sarah Reynolds</strong><span>VP Operations, EcoGrid Energy</span></div>
+        </div>
+      </div>
+      <div class="testi-card reveal">
+        <div class="testi-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+        <p>"The Nexus analytics engine processes our 10TB daily feeds in near real-time. Absolutely transformational for our ops."</p>
+        <div class="testi-author">
+          <div class="author-avatar">ML</div>
+          <div><strong>Marco Levi</strong><span>Director of Data, TeraNova Corp</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── CONTACT ───────────────────────────────────────────────── -->
+<section class="contact section" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div class="contact-info">
+        <div class="section-tag">Get In Touch</div>
+        <h2 class="section-title">Ready to <span class="gradient-text">Transform?</span></h2>
+        <p>Talk to our AI solutions team. Whether you're exploring a pilot or deploying enterprise-wide, we'll find the right path forward — worldwide.</p>
+        <div class="contact-details">
+          <div class="contact-item"><span class="c-icon">&#128205;</span><div><strong>Headquarters</strong><p>Gentian Solartech Inc., United States of America</p></div></div>
+          <div class="contact-item"><span class="c-icon">&#128231;</span><div><strong>Email</strong><p><a href="mailto:gentianinfo1@gmail.com" style="color:var(--accent);text-decoration:none;">gentianinfo1@gmail.com</a></p></div></div>
+          <div class="contact-item"><span class="c-icon">&#128222;</span><div><strong>Phone / WhatsApp</strong><p><a href="tel:+917540008408" style="color:var(--text2);text-decoration:none;">+91-7540008408</a></p></div></div>
+          <div class="contact-item"><span class="c-icon">&#127760;</span><div><strong>Global Services</strong><p>Serving clients in 50+ countries worldwide</p></div></div>
+        </div>
+        <div style="margin-top:24px;display:flex;gap:12px;flex-wrap:wrap;">
+          <a href="pages/consulting.html" class="btn-primary">Book Consultation &#8594;</a>
+          <a href="pages/payment.html" class="btn-ghost">&#128274; Pay Online</a>
+        </div>
+      </div>
+      <form class="contact-form" id="contactForm" action="mailto:gentianinfo1@gmail.com" method="POST" enctype="text/plain">
+        <div class="form-row">
+          <div class="form-group"><label>Full Name</label><input type="text" placeholder="John Smith" required /></div>
+          <div class="form-group"><label>Company</label><input type="text" placeholder="Acme Corp" /></div>
+        </div>
+        <div class="form-group"><label>Email</label><input type="email" placeholder="you@company.com" required /></div>
+        <div class="form-group"><label>Country</label><input type="text" placeholder="United States / India / UK..." /></div>
+        <div class="form-group">
+          <label>Service Needed</label>
+          <select>
+            <option>AI Software Development</option>
+            <option>Automation Systems</option>
+            <option>Data Analytics</option>
+            <option>Energy AI</option>
+            <option>Digital Transformation</option>
+            <option>Security / ShieldAI</option>
+            <option>Enterprise Consulting</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Message</label><textarea rows="4" placeholder="Tell us about your project..."></textarea></div>
+        <button type="submit" class="btn-primary full-width">Send Message &#8594;</button>
+        <div class="form-success" id="formSuccess">&#10003; Message sent! We'll respond within 24 hours.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ────────────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <a href="#" class="logo"><span class="logo-icon">&#x2B21;</span> <span class="logo-text">Gentian<span class="accent">Solartech</span></span></a>
+        <p>AI solutions for the enterprises of tomorrow. Built in the USA. Deployed worldwide in 50+ countries.</p>
+        <p style="margin-top:8px;font-size:.82rem;">&#128231; <a href="mailto:gentianinfo1@gmail.com" style="color:var(--accent)">gentianinfo1@gmail.com</a> &nbsp;|&nbsp; &#128222; <a href="tel:+917540008408" style="color:var(--text2)">+91-7540008408</a></p>
+        <div class="social-links">
+          <a href="#" class="social-btn">&#120143;</a>
+          <a href="#" class="social-btn">in</a>
+          <a href="#" class="social-btn">gh</a>
+          <a href="#" class="social-btn">yt</a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="#">Genesis AI</a></li>
+            <li><a href="#">SolarMind</a></li>
+            <li><a href="#">Nexus Analytics</a></li>
+            <li><a href="#">ShieldAI</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <ul>
+            <li><a href="pages/consulting.html">Consulting</a></li>
+            <li><a href="#">AI Development</a></li>
+            <li><a href="#">Automation</a></li>
+            <li><a href="#">Digital Transformation</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Payments</h4>
+          <ul>
+            <li><a href="pages/payment.html">Buy Online</a></li>
+            <li><a href="pages/crypto.html">Pay with Crypto</a></li>
+            <li><a href="pages/payment.html#bank">Bank Transfer</a></li>
+            <li><a href="pages/payment.html#bnpl">Pay Later</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <ul>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">Security</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&#169; 2025 Gentian Solartech Inc. All rights reserved. | USA | 2D &amp; 3D Secure Payments</p>
+      <div class="payment-badges">
+        <span class="badge">&#128274; 2D Secure</span>
+        <span class="badge">&#128737; 3D Secure</span>
+        <span class="badge">&#8383; Bitcoin</span>
+        <span class="badge">&#926; Ethereum</span>
+        <span class="badge">UPI</span>
+        <span class="badge">PayPal</span>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js"></script>
+</body>
+</html>

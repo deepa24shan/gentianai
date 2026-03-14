@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Buy Now &#8212; Gentian Solartech Inc.</title>
+  <link rel="stylesheet" href="../assets/css/style.css"/>
+  <link rel="stylesheet" href="../assets/css/payment.css"/>
+  <link rel="stylesheet" href="../assets/css/payment-all.css"/>
+  <link rel="stylesheet" href="../assets/css/secure-pay.css"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+<body class="page-body">
+<canvas id="neural-canvas"></canvas>
+<div class="cursor-dot" id="cursorDot"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<header class="nav-header scrolled">
+  <nav class="nav-inner">
+    <a href="../index.html" class="logo"><span class="logo-icon">&#x2B21;</span><span class="logo-text">Gentian<span class="accent">Solartech</span></span></a>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <a href="../pages/consulting.html" class="btn-ghost" style="padding:8px 16px;font-size:.82rem;">Free Consult</a>
+      <a href="../index.html" class="btn-ghost" style="padding:8px 16px;font-size:.82rem;">&#8592; Home</a>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO STRIP -->
+<div class="pay-hero-strip">
+  <img src="https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=1400&q=80&auto=format&fit=crop" alt="Secure Payment" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:brightness(.25) saturate(1.1);" />
+  <div style="position:relative;z-index:1;text-align:center;padding:0 20px;">
+    <div class="worldwide-badge"><span class="world-flags">&#127482;&#127480; &#127470;&#127475; &#127468;&#127463; &#127464;&#127462; &#127462;&#127482; &#127480;&#127468;</span>&nbsp; Worldwide Secure Checkout &mdash; 50+ Countries</div>
+    <h1 style="font-family:var(--font-h);font-size:clamp(1.6rem,4vw,2.8rem);font-weight:800;margin-bottom:8px;">&#128274; Complete Your Purchase</h1>
+    <p style="color:var(--text2);font-size:.9rem;">2D &amp; 3D Secure &nbsp;&#183;&nbsp; 10+ Payment Methods &nbsp;&#183;&nbsp; 14-Day Free Trial &nbsp;&#183;&nbsp; Cancel Anytime</p>
+  </div>
+</div>
+
+<main class="payment-main" style="padding-top:40px;">
+  <div class="payment-container">
+
+    <!-- LEFT: ORDER SUMMARY -->
+    <div class="order-summary">
+      <div class="order-brand">
+        <span style="font-size:2rem;color:var(--accent)">&#x2B21;</span>
+        <div><div style="font-family:var(--font-h);font-weight:800;font-size:1.2rem">Gentian Solartech</div><div style="color:var(--text2);font-size:.8rem">Secure Worldwide Checkout</div></div>
+      </div>
+      <div class="plan-selector">
+        <h3>Select Plan</h3>
+        <div class="plan-options">
+          <label class="plan-option"><input type="radio" name="plan" value="starter" data-price="299"/>
+            <div class="plan-opt-inner"><div class="plan-opt-name">Starter</div><div class="plan-opt-price">$299<span>/mo</span></div></div></label>
+          <label class="plan-option selected"><input type="radio" name="plan" value="professional" data-price="999" checked/>
+            <div class="plan-opt-inner"><div class="plan-opt-name">Professional <span class="pop-tag">Popular</span></div><div class="plan-opt-price">$999<span>/mo</span></div></div></label>
+          <label class="plan-option"><input type="radio" name="plan" value="enterprise" data-price="4999"/>
+            <div class="plan-opt-inner"><div class="plan-opt-name">Enterprise</div><div class="plan-opt-price">$4,999<span>/mo</span></div></div></label>
+        </div>
+      </div>
+      <div class="order-breakdown">
+        <div class="breakdown-row"><span>Plan</span><span id="summaryPlan">Professional</span></div>
+        <div class="breakdown-row"><span>Billing</span><span>Monthly</span></div>
+        <div class="breakdown-row"><span>Free Trial</span><span style="color:var(--accent)">14 Days FREE</span></div>
+        <div class="breakdown-row"><span>Discount</span><span id="summaryDiscount">&#8212;</span></div>
+        <div class="breakdown-row total"><span>Today</span><span id="summaryTotal">$0.00</span></div>
+        <div class="breakdown-row small"><span>Then billed</span><span id="summaryBilled">$999/mo</span></div>
+      </div>
+      <div class="order-includes">
+        <h4 id="planIncludesTitle">Included in Professional</h4>
+        <ul id="planFeatures">
+          <li>&#10003; 20 AI Model Deployments</li>
+          <li>&#10003; 50M API calls/month</li>
+          <li>&#10003; Priority 24/7 Support</li>
+          <li>&#10003; Custom Model Training</li>
+          <li>&#10003; 99.9% SLA Guarantee</li>
+        </ul>
+      </div>
+      <div class="coupon-row"><input type="text" id="couponInput" placeholder="Promo code (try INDIA10)"/><button type="button" id="applyCoupon" class="btn-sm">Apply</button></div>
+      <div class="coupon-msg" id="couponMsg"></div>
+      <div class="security-badges">
+        <div class="sec-badge">&#128274; SSL/TLS</div>
+        <div class="sec-badge">&#128179; PCI DSS</div>
+        <div class="sec-badge">&#128737; 3D Secure</div>
+        <div class="sec-badge">&#128272; 256-bit</div>
+      </div>
+      <div class="accepted-banner">
+        <div class="accepted-label">We Accept Worldwide</div>
+        <div class="accepted-icons">
+          <span class="pay-icon-badge visa">VISA</span><span class="pay-icon-badge mc">MC</span>
+          <span class="pay-icon-badge amex">AMEX</span><span class="pay-icon-badge pp">PayPal</span>
+          <span class="pay-icon-badge upi">UPI</span><span class="pay-icon-badge gpay">GPay</span>
+          <span class="pay-icon-badge btc">&#8383;</span><span class="pay-icon-badge eth">&#926;</span>
+          <span class="pay-icon-badge wire">Wire</span><span class="pay-icon-badge bnpl">BNPL</span>
+        </div>
+      </div>
+      <!-- Contact -->
+      <div style="margin-top:16px;padding:12px;background:var(--bg2);border:1px solid var(--border);border-radius:10px;font-size:.8rem;color:var(--text2);text-align:center;">
+        Need help? &nbsp;<a href="tel:+917540008408" style="color:var(--accent)">+91-7540008408</a> &nbsp;|&nbsp; <a href="mailto:gentianinfo1@gmail.com" style="color:var(--accent)">Email us</a>
+      </div>
+    </div>
+
+    <!-- RIGHT: PAYMENT FORM -->
+    <div class="payment-form-wrap">
+      <h2>Complete Your Order</h2>
+      <p class="form-sub">No charge today &nbsp;&#183;&nbsp; 14-day free trial &nbsp;&#183;&nbsp; Cancel anytime &nbsp;&#183;&nbsp; Worldwide</p>
+
+      <!-- METHOD GRID -->
+      <div class="method-grid">
+        <button class="method-btn active" data-method="card"><span class="method-icon">&#128179;</span><span>Card</span></button>
+        <button class="method-btn" data-method="paypal"><span class="method-icon" style="color:#003087;font-weight:900">P</span><span>PayPal</span></button>
+        <button class="method-btn" data-method="upi"><span class="method-icon">&#128241;</span><span>UPI</span></button>
+        <button class="method-btn" data-method="gpay"><span class="method-icon" style="color:#4285f4;font-weight:900">G</span><span>Google Pay</span></button>
+        <button class="method-btn" data-method="apay"><span class="method-icon">&#63743;</span><span>Apple Pay</span></button>
+        <button class="method-btn" data-method="crypto"><span class="method-icon">&#8383;</span><span>Crypto</span></button>
+        <button class="method-btn" data-method="bank"><span class="method-icon">&#127970;</span><span>Bank Wire</span></button>
+        <button class="method-btn" data-method="bnpl"><span class="method-icon">&#128197;</span><span>Pay Later</span></button>
+      </div>
+
+      <!-- ═══ CARD PANEL with 2D/3D ═══ -->
+      <div class="pay-panel active" id="panel-card">
+        <div class="panel-header">
+          <span class="panel-icon">&#128179;</span>
+          <span class="panel-name">Credit / Debit Card</span>
+          <div class="card-brand-row">
+            <span class="cbr">VISA</span><span class="cbr">Mastercard</span><span class="cbr">Amex</span><span class="cbr">Discover</span><span class="cbr">RuPay</span>
+          </div>
+        </div>
+
+        <!-- Payment Steps -->
+        <div class="payment-steps" id="paymentSteps">
+          <div class="ps-step"><div class="ps-circle active" id="step1c">1</div><div class="ps-label">Card Details</div></div>
+          <div class="ps-line" id="line1"></div>
+          <div class="ps-step"><div class="ps-circle" id="step2c">2</div><div class="ps-label">Authentication</div></div>
+          <div class="ps-line" id="line2"></div>
+          <div class="ps-step"><div class="ps-circle" id="step3c">3</div><div class="ps-label">Confirmation</div></div>
+        </div>
+
+        <!-- 2D / 3D Toggle -->
+        <div class="security-mode-toggle">
+          <button class="sec-mode-btn mode-2d" id="btn2d" onclick="setSecurityMode('2d')">&#128100; 2D — Standard Payment</button>
+          <button class="sec-mode-btn mode-3d active" id="btn3d" onclick="setSecurityMode('3d')">&#128737; 3D Secure — Enhanced Security</button>
+        </div>
+        <div class="sec-mode-info info-2d" id="info2d">
+          <span class="sec-info-icon">&#128100;</span>
+          <span><strong>2D Payment:</strong> Basic card processing &mdash; name, number, expiry, CVV. Fast checkout, no OTP required. Best for known/trusted cards. Supported by all major card networks.</span>
+        </div>
+        <div class="sec-mode-info info-3d show" id="info3d">
+          <span class="sec-info-icon">&#128737;</span>
+          <span><strong>3D Secure (3DS2):</strong> Bank-verified payment with OTP or biometric confirmation sent to your registered phone/app. Adds an extra fraud protection layer. Recommended for all transactions.</span>
+        </div>
+
+        <!-- Card Form -->
+        <form id="payment-form">
+          <div class="form-row-2">
+            <div class="form-group"><label>First Name</label><input type="text" placeholder="John" required/></div>
+            <div class="form-group"><label>Last Name</label><input type="text" placeholder="Smith" required/></div>
+          </div>
+          <div class="form-group"><label>Email Address</label><input type="email" id="cardEmail" placeholder="you@company.com" required/></div>
+          <div class="form-group">
+            <label>Card Number</label>
+            <div class="card-input-wrap">
+              <input type="text" id="cardNumber" placeholder="0000  0000  0000  0000" maxlength="19"/>
+              <span id="cardTypeIcon" class="card-type-icon">&#128179;</span>
+            </div>
+            <p class="field-note">Test: 4242 4242 4242 4242 &nbsp;|&nbsp; 3D Test: 4000 0025 0000 3155</p>
+          </div>
+          <div class="form-row-3">
+            <div class="form-group"><label>Expiry</label><input type="text" id="expiry" placeholder="MM / YY" maxlength="7"/></div>
+            <div class="form-group"><label>CVV / CVC</label><input type="text" id="cvc" placeholder="&#8226;&#8226;&#8226;" maxlength="4"/></div>
+            <div class="form-group"><label>ZIP / PIN</label><input type="text" placeholder="110001" maxlength="10"/></div>
+          </div>
+          <div class="form-group">
+            <label>Billing Country</label>
+            <select id="billingCountry">
+              <option value="IN" selected>&#127470;&#127475; India</option>
+              <option value="US">&#127482;&#127480; United States</option>
+              <option value="GB">&#127468;&#127463; United Kingdom</option>
+              <option value="CA">&#127464;&#127462; Canada</option>
+              <option value="AU">&#127462;&#127482; Australia</option>
+              <option value="SG">&#127480;&#127468; Singapore</option>
+              <option value="DE">&#127465;&#127466; Germany</option>
+              <option value="FR">&#127467;&#127479; France</option>
+              <option value="JP">&#127471;&#127477; Japan</option>
+              <option value="AE">&#127462;&#127466; UAE</option>
+              <option value="BR">&#127463;&#127479; Brazil</option>
+              <option value="other">&#127758; Other</option>
+            </select>
+          </div>
+          <div class="form-group" id="phoneField3d">
+            <label>Mobile (for OTP verification)</label>
+            <input type="tel" id="mobileNumber" placeholder="+91 7540008408" />
+            <p class="field-note">Required for 3D Secure OTP authentication</p>
+          </div>
+          <label class="save-card-check"><input type="checkbox" checked/> Save card securely for future payments</label>
+          <button type="submit" class="btn-pay" id="payBtn">
+            <span id="payBtnText">&#128274; Pay Securely &#8212; $0.00 Today (3D Secure)</span>
+            <div class="pay-spinner" id="paySpinner"></div>
+          </button>
+          <div class="payment-result" id="paymentResult"></div>
+        </form>
+
+        <!-- 3D Secure OTP Panel -->
+        <div class="otp-panel" id="otpPanel">
+          <div class="otp-bank-logo">&#127968;</div>
+          <div class="otp-title">3D Secure Authentication</div>
+          <div class="otp-subtitle">Your bank has sent a one-time password to your registered mobile number. Enter it below to authorize this payment.</div>
+          <div class="otp-phone-masked">OTP sent to: &#9679;&#9679;&#9679;&#9679;&#9679; <span id="maskedPhone">8408</span></div>
+          <div class="otp-inputs">
+            <input class="otp-input" maxlength="1" type="text" id="otp1" />
+            <input class="otp-input" maxlength="1" type="text" id="otp2" />
+            <input class="otp-input" maxlength="1" type="text" id="otp3" />
+            <input class="otp-input" maxlength="1" type="text" id="otp4" />
+            <input class="otp-input" maxlength="1" type="text" id="otp5" />
+            <input class="otp-input" maxlength="1" type="text" id="otp6" />
+          </div>
+          <div class="otp-timer">OTP expires in: <span id="otpCountdown">05:00</span></div>
+          <button class="btn-verify-otp" id="verifyOtpBtn">&#128274; Verify &amp; Complete Payment</button>
+          <div class="otp-resend" style="margin-top:12px;">Didn't receive it? <a onclick="resendOTP()">Resend OTP</a></div>
+        </div>
+
+        <!-- 3D Bank Redirect Simulation -->
+        <div class="bank-redirect-box" id="bankRedirectBox">
+          <div class="brb-topbar">
+            <div class="brb-dots"><span></span><span></span><span></span></div>
+            <div class="brb-url">&#128274; https://acs.bank.com/3ds2/authenticate</div>
+            <div class="brb-lock">&#128274;</div>
+          </div>
+          <div class="brb-body">
+            <div class="brb-bank-name" id="brbBankName">Verifying with Your Bank...</div>
+            <div class="brb-secure-badge">&#128274; Secured by 3D Secure 2.0</div>
+            <div class="brb-card-preview">Card ending in &bull;&bull;&bull;&bull; <span id="brbCardLast">4242</span> &nbsp;|&nbsp; Amount: $0.00 today</div>
+          </div>
+        </div>
+
+        <div class="payment-seal">
+          <span class="seal-icon">&#128737;</span>
+          <div class="seal-text">
+            <strong id="sealText">&#128274; 3D Secure 2.0 Active</strong>
+            <span>Your transaction is protected by bank-level authentication. PCI DSS Level 1 compliant. Powered by Stripe.</span>
+          </div>
+        </div>
+        <p class="form-legal" style="margin-top:12px;">You'll be charged <span id="legalPrice">$999/mo</span> after 14-day trial. Cancel anytime. Agree to our <a href="#">Terms</a> &amp; <a href="#">Privacy Policy</a>.</p>
+      </div>
+
+      <!-- ═══ PAYPAL ═══ -->
+      <div class="pay-panel" id="panel-paypal">
+        <div class="panel-header"><span class="panel-icon" style="font-weight:900;color:#003087">P</span><span class="panel-name">PayPal</span></div>
+        <div class="wallet-box">
+          <div class="paypal-logo-display"><span style="color:#003087;font-size:2rem;font-weight:900">Pay</span><span style="color:#009cde;font-size:2rem;font-weight:900">Pal</span></div>
+          <p style="color:var(--text2);line-height:1.7;margin:12px 0 20px;">Redirected to PayPal for secure checkout. Log in or pay as guest. Works in 200+ countries.</p>
+          <div class="wallet-amount-row"><span>Due today (trial):</span><strong style="color:var(--accent)">$0.00</strong></div>
+          <div class="wallet-amount-row"><span>After 14 days:</span><strong id="ppBilled">$999.00/mo</strong></div>
+          <button class="btn-paypal" id="paypalBtn"><span style="font-weight:900;color:#003087">Pay</span><span style="font-weight:900;color:#009cde">Pal</span> &mdash; Checkout Securely</button>
+          <div class="wallet-note">&#10003; Buyer Protection &nbsp;&#183;&nbsp; &#10003; 200+ countries &nbsp;&#183;&nbsp; &#10003; No card info shared</div>
+        </div>
+      </div>
+
+      <!-- ═══ UPI ═══ -->
+      <div class="pay-panel" id="panel-upi">
+        <div class="panel-header"><span class="panel-icon">&#128241;</span><span class="panel-name">UPI Payment</span><span class="panel-badge india-badge">&#127470;&#127475; India</span></div>
+        <div class="upi-tab-row">
+          <button class="upi-tab active" data-upi="id">UPI ID</button>
+          <button class="upi-tab" data-upi="qr">Scan QR</button>
+          <button class="upi-tab" data-upi="apps">UPI Apps</button>
+        </div>
+        <div class="upi-panel active" id="upi-id">
+          <div class="form-group"><label>Your UPI ID</label><div class="upi-input-wrap"><input type="text" id="upiId" placeholder="name@okaxis / name@ybl"/></div><p class="field-note">Works with PhonePe, Google Pay, Paytm, BHIM, Amazon Pay...</p></div>
+          <div class="inr-banner" id="inrBanner">&#8377; Calculating INR equivalent...</div>
+          <div class="upi-app-chips"><span class="upi-chip">PhonePe</span><span class="upi-chip">Google Pay</span><span class="upi-chip">Paytm</span><span class="upi-chip">BHIM</span><span class="upi-chip">Amazon Pay</span><span class="upi-chip">WhatsApp Pay</span></div>
+          <button class="btn-pay" style="margin-top:16px" onclick="processUPI()">&#128241; Pay via UPI</button>
+        </div>
+        <div class="upi-panel" id="upi-qr">
+          <div class="upi-qr-box">
+            <div class="upi-qr-code"><div class="qr-pattern"><div class="qr-corner tl"></div><div class="qr-corner tr"></div><div class="qr-corner bl"></div><div class="qr-dots" id="qrDots"></div></div></div>
+            <p class="qr-label">Scan with any UPI app</p>
+            <div class="inr-banner" id="inrBannerQR">&#8377; Calculating...</div>
+            <div class="upi-id-row">UPI ID: <strong>gentianinfo1@oksbi</strong></div>
+          </div>
+        </div>
+        <div class="upi-panel" id="upi-apps">
+          <p style="color:var(--text2);font-size:.85rem;margin-bottom:16px;">Tap your app to open directly:</p>
+          <div class="upi-apps-grid">
+            <button class="upi-app-tile" onclick="openUPIApp('phonepe')"><div class="uat-icon" style="background:#5f259f">&#128241;</div><span>PhonePe</span></button>
+            <button class="upi-app-tile" onclick="openUPIApp('gpay')"><div class="uat-icon" style="background:#4285f4;font-weight:900">G</div><span>Google Pay</span></button>
+            <button class="upi-app-tile" onclick="openUPIApp('paytm')"><div class="uat-icon" style="background:#002970;font-weight:900">P</div><span>Paytm</span></button>
+            <button class="upi-app-tile" onclick="openUPIApp('bhim')"><div class="uat-icon" style="background:#00529b;font-weight:900">B</div><span>BHIM</span></button>
+            <button class="upi-app-tile" onclick="openUPIApp('amazon')"><div class="uat-icon" style="background:#ff9900;font-weight:900">A</div><span>Amazon Pay</span></button>
+            <button class="upi-app-tile" onclick="openUPIApp('whatsapp')"><div class="uat-icon" style="background:#25d366">W</div><span>WhatsApp Pay</span></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ GOOGLE PAY ═══ -->
+      <div class="pay-panel" id="panel-gpay">
+        <div class="panel-header"><span class="panel-icon" style="font-weight:900;color:#4285f4">G</span><span class="panel-name">Google Pay</span></div>
+        <div class="wallet-box">
+          <div class="gpay-logo-display"><span style="color:#4285f4;font-size:2rem;font-weight:900">G</span><span style="color:#34a853;font-size:2rem;font-weight:900">o</span><span style="color:#ea4335;font-size:2rem;font-weight:900">o</span><span style="color:#fbbc05;font-size:2rem;font-weight:900">g</span><span style="color:#4285f4;font-size:2rem;font-weight:900">le</span><span style="font-size:2rem;font-weight:800"> Pay</span></div>
+          <p style="color:var(--text2);line-height:1.7;margin:12px 0 20px;">Fast, secure checkout using your Google account. Works globally. Supports UPI, cards, and net banking.</p>
+          <div class="wallet-amount-row"><span>Due today:</span><strong style="color:var(--accent)">$0.00 (Free Trial)</strong></div>
+          <div class="wallet-amount-row"><span>After trial:</span><strong id="gpayBilled">$999.00/mo</strong></div>
+          <button class="btn-gpay" id="gpayBtn"><span style="font-weight:900;color:#4285f4;font-size:1.2rem">G</span>&nbsp; Pay with Google Pay</button>
+          <div class="wallet-note">&#128161; Requires Google account + saved payment in Google Pay</div>
+        </div>
+      </div>
+
+      <!-- ═══ APPLE PAY ═══ -->
+      <div class="pay-panel" id="panel-apay">
+        <div class="panel-header"><span class="panel-icon">&#63743;</span><span class="panel-name">Apple Pay</span></div>
+        <div class="wallet-box">
+          <div class="apay-logo-display"><span style="font-size:3rem">&#127822;</span><span style="font-family:var(--font-h);font-size:2rem;font-weight:800"> Pay</span></div>
+          <p style="color:var(--text2);line-height:1.7;margin:12px 0 20px;">Pay with Face ID, Touch ID, or Apple Watch. Fastest, most private way to pay. Card never shared with merchants.</p>
+          <div class="wallet-amount-row"><span>Due today:</span><strong style="color:var(--accent)">$0.00 (Free Trial)</strong></div>
+          <div class="wallet-amount-row"><span>After trial:</span><strong id="apayBilled">$999.00/mo</strong></div>
+          <button class="btn-apay" id="apayBtn">&#127822; Pay with Apple Pay</button>
+          <div class="wallet-note">&#128161; Available on Safari + iOS/macOS with Apple Pay set up</div>
+        </div>
+      </div>
+
+      <!-- ═══ CRYPTO ═══ -->
+      <div class="pay-panel" id="panel-crypto">
+        <div class="panel-header"><span class="panel-icon">&#8383;</span><span class="panel-name">Cryptocurrency</span><span class="live-tag">&#9679; LIVE</span></div>
+        <div class="crypto-notice-bar">&#9889; Real-time rates via CoinGecko API &mdash; 8 coins supported worldwide</div>
+        <div class="crypto-coin-grid">
+          <button class="coin-tile active" data-coin="BTC" data-id="bitcoin"><span class="ct-icon" style="color:#f7931a">&#8383;</span><span class="ct-name">Bitcoin</span><span class="ct-sym">BTC</span></button>
+          <button class="coin-tile" data-coin="ETH" data-id="ethereum"><span class="ct-icon" style="color:#627eea">&#926;</span><span class="ct-name">Ethereum</span><span class="ct-sym">ETH</span></button>
+          <button class="coin-tile" data-coin="USDT" data-id="tether"><span class="ct-icon" style="color:#26a17b">&#9676;</span><span class="ct-name">Tether</span><span class="ct-sym">USDT</span></button>
+          <button class="coin-tile" data-coin="USDC" data-id="usd-coin"><span class="ct-icon" style="color:#2775ca">$</span><span class="ct-name">USDC</span><span class="ct-sym">USDC</span></button>
+          <button class="coin-tile" data-coin="BNB" data-id="binancecoin"><span class="ct-icon" style="color:#f3ba2f">&#x2B21;</span><span class="ct-name">BNB</span><span class="ct-sym">BNB</span></button>
+          <button class="coin-tile" data-coin="SOL" data-id="solana"><span class="ct-icon" style="color:#9945ff">&#9676;</span><span class="ct-name">Solana</span><span class="ct-sym">SOL</span></button>
+          <button class="coin-tile" data-coin="XRP" data-id="ripple"><span class="ct-icon" style="color:#346aa9">&#10005;</span><span class="ct-name">Ripple</span><span class="ct-sym">XRP</span></button>
+          <button class="coin-tile" data-coin="LTC" data-id="litecoin"><span class="ct-icon" style="color:#bfbbbb">&#321;</span><span class="ct-name">Litecoin</span><span class="ct-sym">LTC</span></button>
+        </div>
+        <div class="crypto-amount-display">
+          <div class="cad-rate">1 <span id="cryptoCoinLabel">BTC</span> = <span id="cryptoLivePrice">Fetching...</span> <span class="cad-updated" id="cryptoUpdated"></span></div>
+          <div class="cad-main"><span class="cad-label">You Send:</span><span class="cad-amount" id="cryptoAmount">--</span><span class="cad-coin" id="cryptoCoinSymbol">BTC</span></div>
+          <div class="cad-usd">= $<span id="cryptoUSD">999</span> USD</div>
+        </div>
+        <div class="crypto-addr-box">
+          <div class="cab-header"><span>Send to address:</span><span class="cab-network" id="cryptoNetwork">Bitcoin Mainnet</span></div>
+          <div class="cab-row"><code class="cab-addr" id="cryptoAddr">bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh</code><button class="copy-btn" id="copyAddr">&#128203;</button></div>
+          <div class="cab-timer-row"><span>&#8987; Expires:</span><span class="cab-timer" id="cryptoTimer">29:59</span><div class="cab-timer-bar"><div class="cab-timer-fill" id="timerFill"></div></div></div>
+        </div>
+        <div class="crypto-flow">
+          <div class="cf-step"><span class="cf-num">1</span><span>Open wallet</span></div><span class="cf-arrow">&#8594;</span>
+          <div class="cf-step"><span class="cf-num">2</span><span>Send exact amount</span></div><span class="cf-arrow">&#8594;</span>
+          <div class="cf-step"><span class="cf-num">3</span><span>1-3 confirmations</span></div><span class="cf-arrow">&#8594;</span>
+          <div class="cf-step"><span class="cf-num">4</span><span>Access granted</span></div>
+        </div>
+      </div>
+
+      <!-- ═══ BANK TRANSFER ═══ -->
+      <div class="pay-panel" id="panel-bank">
+        <div class="panel-header"><span class="panel-icon">&#127970;</span><span class="panel-name">Bank Transfer / Wire</span></div>
+        <div class="bank-tab-row">
+          <button class="bank-tab active" data-bank="international">International Wire</button>
+          <button class="bank-tab" data-bank="india">India NEFT/RTGS</button>
+          <button class="bank-tab" data-bank="sepa">SEPA (EU)</button>
+          <button class="bank-tab" data-bank="ach">ACH (USA)</button>
+        </div>
+        <div class="bank-panel active" id="bank-international">
+          <div class="bank-notice">&#9888; Bank transfers take 3-5 business days. Subscription activates on receipt.</div>
+          <div class="bank-details-grid">
+            <div class="bdr"><span>Account Name</span><strong>Gentian Solartech Inc.</strong></div>
+            <div class="bdr"><span>Bank</span><strong>JP Morgan Chase Bank, N.A.</strong></div>
+            <div class="bdr"><span>Account No.</span><strong>XXXX-XXXX-1234 <button class="copy-inline-btn" onclick="copyText('XXXXXXXX1234')">&#128203;</button></strong></div>
+            <div class="bdr"><span>SWIFT/BIC</span><strong>CHASUS33 <button class="copy-inline-btn" onclick="copyText('CHASUS33')">&#128203;</button></strong></div>
+            <div class="bdr"><span>Routing No.</span><strong>021000021</strong></div>
+            <div class="bdr highlight"><span>Amount (USD)</span><strong id="wireAmt">$999.00</strong></div>
+            <div class="bdr"><span>Reference</span><strong class="ref-code">GST-WIRE-<span id="refCode">738492</span></strong></div>
+          </div>
+          <div class="bank-important-box">&#9888; <strong>Important:</strong> Include reference code so we match your payment. Email: <a href="mailto:gentianinfo1@gmail.com" style="color:var(--accent)">gentianinfo1@gmail.com</a></div>
+          <button class="btn-primary full-width" onclick="confirmBankTransfer()">I've Made the Transfer &#8594;</button>
+        </div>
+        <div class="bank-panel" id="bank-india">
+          <div class="bank-notice">&#128161; NEFT: 2-4 hrs &nbsp;&#183;&nbsp; RTGS: Real-time &nbsp;&#183;&nbsp; IMPS: Instant 24/7</div>
+          <div class="bank-details-grid">
+            <div class="bdr"><span>Account Name</span><strong>Gentian Solartech Inc.</strong></div>
+            <div class="bdr"><span>Bank</span><strong>HDFC Bank</strong></div>
+            <div class="bdr"><span>Account No.</span><strong>XXXX-XXXX-5678 <button class="copy-inline-btn" onclick="copyText('XXXXXXXX5678')">&#128203;</button></strong></div>
+            <div class="bdr"><span>IFSC Code</span><strong>HDFC0001234 <button class="copy-inline-btn" onclick="copyText('HDFC0001234')">&#128203;</button></strong></div>
+            <div class="bdr"><span>Branch</span><strong>Chennai, Tamil Nadu</strong></div>
+            <div class="bdr highlight"><span>Amount (INR)</span><strong id="inrAmt">&#8377; Calculating...</strong></div>
+            <div class="bdr"><span>Reference</span><strong class="ref-code">GST-IN-<span id="refIN">738492</span></strong></div>
+          </div>
+          <button class="btn-primary full-width" onclick="confirmBankTransfer()">I've Made the Transfer &#8594;</button>
+        </div>
+        <div class="bank-panel" id="bank-sepa">
+          <div class="bank-notice">&#127466;&#127482; SEPA settles in 1 business day across EU/EEA.</div>
+          <div class="bank-details-grid">
+            <div class="bdr"><span>Account Name</span><strong>Gentian Solartech Inc.</strong></div>
+            <div class="bdr"><span>IBAN</span><strong>DE89 3704 0044 0532 0130 00 <button class="copy-inline-btn" onclick="copyText('DE89370400440532013000')">&#128203;</button></strong></div>
+            <div class="bdr"><span>BIC/SWIFT</span><strong>COBADEFFXXX</strong></div>
+            <div class="bdr highlight"><span>Amount (EUR)</span><strong id="eurAmt">&#8364; Calculating...</strong></div>
+            <div class="bdr"><span>Reference</span><strong class="ref-code">GST-EU-<span id="refEU">738492</span></strong></div>
+          </div>
+          <button class="btn-primary full-width" onclick="confirmBankTransfer()">I've Made the Transfer &#8594;</button>
+        </div>
+        <div class="bank-panel" id="bank-ach">
+          <div class="bank-notice">&#127482;&#127480; ACH is free for US customers. Settles in 1-3 business days.</div>
+          <div class="bank-details-grid">
+            <div class="bdr"><span>Account Name</span><strong>Gentian Solartech Inc.</strong></div>
+            <div class="bdr"><span>Account No.</span><strong>XXXX-XXXX-9012 <button class="copy-inline-btn" onclick="copyText('XXXXXXXX9012')">&#128203;</button></strong></div>
+            <div class="bdr"><span>Routing No.</span><strong>021000021 <button class="copy-inline-btn" onclick="copyText('021000021')">&#128203;</button></strong></div>
+            <div class="bdr"><span>Account Type</span><strong>Business Checking</strong></div>
+            <div class="bdr highlight"><span>Amount (USD)</span><strong id="achAmt">$999.00</strong></div>
+            <div class="bdr"><span>Reference</span><strong class="ref-code">GST-ACH-<span id="refACH">738492</span></strong></div>
+          </div>
+          <button class="btn-primary full-width" onclick="confirmBankTransfer()">I've Made the Transfer &#8594;</button>
+        </div>
+      </div>
+
+      <!-- ═══ BNPL ═══ -->
+      <div class="pay-panel" id="panel-bnpl">
+        <div class="panel-header"><span class="panel-icon">&#128197;</span><span class="panel-name">Buy Now, Pay Later</span></div>
+        <div class="bnpl-grid">
+          <div class="bnpl-card">
+            <div class="bnpl-top"><div class="bnpl-logo klarna-logo">Klarna</div><span class="bnpl-tag green">0% Interest</span></div>
+            <p>Split into 4 interest-free payments every 2 weeks.</p>
+            <div class="bnpl-installments">
+              <div class="bi-row"><span>Today</span><strong style="color:var(--accent)">$0.00</strong></div>
+              <div class="bi-row"><span>Week 2</span><strong id="k1">$249.75</strong></div>
+              <div class="bi-row"><span>Week 4</span><strong id="k2">$249.75</strong></div>
+              <div class="bi-row last"><span>Week 6 + 8</span><strong id="k3">$249.75</strong></div>
+            </div>
+            <button class="bnpl-btn klarna-btn" onclick="processBNPL('klarna')">Pay with Klarna</button>
+          </div>
+          <div class="bnpl-card">
+            <div class="bnpl-top"><div class="bnpl-logo afterpay-logo">Afterpay</div><span class="bnpl-tag blue">4 Payments</span></div>
+            <p>Four equal fortnightly payments, 0% interest if paid on time.</p>
+            <div class="bnpl-installments">
+              <div class="bi-row"><span>Today</span><strong style="color:var(--accent)">$0.00</strong></div>
+              <div class="bi-row"><span>Fortnight 1-2</span><strong id="ap1">$249.75</strong></div>
+              <div class="bi-row last"><span>Fortnight 3-4</span><strong id="ap2">$249.75</strong></div>
+            </div>
+            <button class="bnpl-btn afterpay-btn" onclick="processBNPL('afterpay')">Pay with Afterpay</button>
+          </div>
+          <div class="bnpl-card">
+            <div class="bnpl-top"><div class="bnpl-logo affirm-logo">Affirm</div><span class="bnpl-tag purple">Monthly Plans</span></div>
+            <p>Pay in 3, 6, or 12 monthly installments. Check eligibility instantly.</p>
+            <div class="affirm-options">
+              <div class="affirm-opt active" data-months="3"><span class="ao-mo">3 mo</span><span class="ao-amt" id="affirm3">$333/mo</span></div>
+              <div class="affirm-opt" data-months="6"><span class="ao-mo">6 mo</span><span class="ao-amt" id="affirm6">$167/mo</span></div>
+              <div class="affirm-opt" data-months="12"><span class="ao-mo">12 mo</span><span class="ao-amt" id="affirm12">$83/mo</span></div>
+            </div>
+            <button class="bnpl-btn affirm-btn" onclick="processBNPL('affirm')">Continue with Affirm</button>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /payment-form-wrap -->
+  </div><!-- /payment-container -->
+</main>
+
+<!-- SUCCESS MODAL -->
+<div class="modal-overlay" id="successModal">
+  <div class="modal-card">
+    <div class="modal-icon">&#10003;</div>
+    <h3 id="modalTitle">Payment Successful!</h3>
+    <p id="modalMsg">Welcome to Gentian Solartech! Confirmation sent to <strong>gentianinfo1@gmail.com</strong>.</p>
+    <div style="display:flex;gap:12px;margin-top:20px;justify-content:center;flex-wrap:wrap;">
+      <a href="../index.html" class="btn-primary">&#8592; Home</a>
+      <a href="consulting.html" class="btn-ghost">Book Consultation</a>
+    </div>
+  </div>
+</div>
+<div class="modal-overlay" id="bankModal">
+  <div class="modal-card">
+    <div class="modal-icon" style="background:linear-gradient(135deg,#4ade80,#22c55e)">&#127970;</div>
+    <h3>Transfer Noted!</h3>
+    <p>Once funds are received, we'll activate your account and email <strong>gentianinfo1@gmail.com</strong> within 1-5 business days.</p>
+    <button class="btn-primary" onclick="document.getElementById('bankModal').classList.remove('show')" style="margin-top:16px">Got It</button>
+  </div>
+</div>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/payment-all.js"></script>
+<script src="../assets/js/secure-pay.js"></script>
+</body>
+</html>
